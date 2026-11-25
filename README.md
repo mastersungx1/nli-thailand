@@ -7,8 +7,8 @@ logistics and infrastructure projects in Thailand, such as high-speed rail, land
 industrial corridors. It combines live government geodata, map tools and a project index
 (the NLI index) in one web map.
 
-The project started as a prototype for a 2025 geospatial hackathon and is now being developed
-into a working analysis tool.
+The project started as a prototype for a 2025 geospatial hackathon and is now a working analysis tool
+that runs entirely in the browser.
 
 ![EEC high-speed rail project in 3D](docs/screenshots/01-eec-high-speed-rail-3d.jpg)
 
@@ -28,35 +28,36 @@ into a working analysis tool.
     hospitals, rock units by geologic period, geoheritage sites, LiDAR elevation
 - Click any feature for its attributes; legends, search and load status in the layer panel
 - Very large datasets (for example 4.3 million land-use polygons) load only for the visible area
-- Map tools: distance and area measurement, drawing, 3D tilt, scale bar, coordinates
+- **Projects**: draw a corridor, site or point, import one from a file, or pick any feature on the map
+- **The NLI index**: a 0-100 score for each project, computed live from the data layers (details below)
+- **Finance**: NPV, IRR, benefit-cost ratio and payback from the user's own cost and benefit figures
+- **Compare** projects side by side, and **print a report** (save as PDF) with map, indicators and sources
+- **Tools**: import GeoJSON / KML / Shapefile, export map image / GeoJSON / CSV, attribute table,
+  box selection, layer control, legend, map notes, shareable links, measurement, drawing, 3D tilt
 - Free basemaps (street, light, dark, satellite) and a Thai / English interface
 
-## In development
+## How the NLI index works
 
-**Working tools.** Import (GeoJSON, KML, Shapefile), export (map image, GeoJSON, CSV), attribute
-table, feature selection, map notes and shareable links.
+Draw a project and the index is calculated from the live data layers across five dimensions:
 
-**The NLI index.** Draw a project corridor or site and get a 0-100 index computed from the live
-data layers, across five dimensions:
-
-| Dimension | Example indicators |
+| Dimension | Indicators |
 |---|---|
 | Connectivity | Distance to the nearest cargo port, airport, inland container depot, rail station and national highway |
-| Economic potential | GPP per capita, population and industry / transport share of the provinces served |
-| Land & planning | Land-use mix along the corridor, overlap with land reform areas |
-| Environment | Overlap with reserved forests, national parks and wildlife sanctuaries |
-| Risk & resources | Disaster exposure of the sub-districts crossed, groundwater and irrigation |
+| Economic potential | GPP per capita, population density and industry / transport share of the provinces served |
+| Land & planning | Developable share of land use around the project, overlap with land reform areas |
+| Environment | Overlap with reserved forests, national parks and wildlife sanctuaries; distance to the nearest one |
+| Risk & resources | Disaster exposure of the sub-districts crossed, groundwater potential |
 
 Indicators are normalised to 0-100 and combined with adjustable weights (multi-criteria decision
-analysis, with an optional AHP pairwise-comparison helper). A sensitivity test re-runs the index
-with randomised weights, so users see how stable a result or a ranking is. Projects crossing
-protected areas are flagged, not just penalised. A financial module computes NPV, IRR,
-benefit-cost ratio and payback from the user's own cost and benefit inputs.
+analysis, with an AHP pairwise-comparison option and its consistency ratio). A sensitivity test
+re-runs the index with 1,000 randomised weight sets, so users see how stable a result or a ranking
+is. Projects crossing national parks or wildlife sanctuaries are flagged and can be excluded. Every
+formula is shown in the app's Method tab.
 
-The index is a screening tool built on open data. It is not a feasibility study or an
-environmental impact assessment.
+The index is a screening tool built on open data. Distances are straight-line, not travel time. It
+is not a feasibility study or an environmental impact assessment.
 
-**Later.** An AI assistant that can open layers, run the NLI analysis and explain the results.
+**Planned:** an AI assistant that can open layers, run the analysis and explain the results.
 
 | Heatmap analysis | Southern Land Bridge | Compare projects |
 |---|---|---|
@@ -80,8 +81,9 @@ Basemaps: [OpenFreeMap](https://openfreemap.org), © [OpenMapTiles](https://open
 ## ภาษาไทย
 
 NLI-Thailand คือแพลตฟอร์มภูมิสารสนเทศช่วยตัดสินใจสำหรับโครงการลงทุนด้านโลจิสติกส์และโครงสร้างพื้นฐานของไทย
-ปัจจุบันเว็บมีชั้นข้อมูลสดจากบริการภาครัฐ 41 ชั้น และกำลังพัฒนาเครื่องมือที่ใช้งานได้จริง รวมถึงดัชนี NLI
-ที่คำนวณจากข้อมูลจริงใน 5 มิติ ได้แก่ การเชื่อมต่อ ศักยภาพเศรษฐกิจ ที่ดินและผัง สิ่งแวดล้อม และความเสี่ยง
+เว็บมีชั้นข้อมูลสดจากบริการภาครัฐ 41 ชั้น เครื่องมือแผนที่ที่ใช้งานได้จริง และดัชนี NLI ที่คำนวณจากข้อมูลจริง
+ใน 5 มิติ ได้แก่ การเชื่อมต่อ ศักยภาพเศรษฐกิจ ที่ดินและผัง สิ่งแวดล้อม และความเสี่ยงและทรัพยากร
+พร้อมตัวชี้วัดทางการเงิน การเปรียบเทียบโครงการ และรายงาน PDF
 
 ## Source code
 
