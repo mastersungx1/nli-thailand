@@ -1,0 +1,92 @@
+# NLI-Thailand — National Logistic Investment Platform
+
+**Live site: https://mastersungx1.github.io/nli-thailand/**
+
+NLI-Thailand is a GIS decision-support platform for planners and investors assessing large
+logistics and infrastructure projects in Thailand, such as high-speed rail, land bridges, ports and
+industrial corridors. It combines live government geodata, map tools and a project index
+(the NLI index) in one web map.
+
+The project started as a prototype for a 2025 geospatial hackathon and is now being developed
+into a working analysis tool.
+
+![EEC high-speed rail project in 3D](docs/screenshots/01-eec-high-speed-rail-3d.jpg)
+
+## What works today
+
+- **41 live data layers** from Thai government open GIS services, loaded straight into the browser:
+  - *Transport & logistics*: national highways, rural roads, expressways, railways and stations,
+    urban rail (existing and planned), airports, ports and piers by cargo type, inland container
+    depots, truck and bus terminals, Ministry of Transport major projects, highway works, Asian Highway
+  - *Administrative*: provinces, districts, sub-districts, municipalities
+  - *Economy & energy*: gross provincial product per capita, renewable power plants, EGAT power
+    plants and dams, petroleum concession blocks
+  - *Land use & planning*: land use 2021, EEC land use plan, land reform areas, public land,
+    15-minute city score
+  - *Forests, water, risk, geology*: reserved forests, national parks, wildlife sanctuaries, river
+    basins, irrigation areas, water bodies, streams, groundwater potential, disaster exposure,
+    hospitals, rock units by geologic period, geoheritage sites, LiDAR elevation
+- Click any feature for its attributes; legends, search and load status in the layer panel
+- Very large datasets (for example 4.3 million land-use polygons) load only for the visible area
+- Map tools: distance and area measurement, drawing, 3D tilt, scale bar, coordinates
+- Free basemaps (street, light, dark, satellite) and a Thai / English interface
+
+## In development
+
+**Working tools.** Import (GeoJSON, KML, Shapefile), export (map image, GeoJSON, CSV), attribute
+table, feature selection, map notes and shareable links.
+
+**The NLI index.** Draw a project corridor or site and get a 0-100 index computed from the live
+data layers, across five dimensions:
+
+| Dimension | Example indicators |
+|---|---|
+| Connectivity | Distance to the nearest cargo port, airport, inland container depot, rail station and national highway |
+| Economic potential | GPP per capita, population and industry / transport share of the provinces served |
+| Land & planning | Land-use mix along the corridor, overlap with land reform areas |
+| Environment | Overlap with reserved forests, national parks and wildlife sanctuaries |
+| Risk & resources | Disaster exposure of the sub-districts crossed, groundwater and irrigation |
+
+Indicators are normalised to 0-100 and combined with adjustable weights (multi-criteria decision
+analysis, with an optional AHP pairwise-comparison helper). A sensitivity test re-runs the index
+with randomised weights, so users see how stable a result or a ranking is. Projects crossing
+protected areas are flagged, not just penalised. A financial module computes NPV, IRR,
+benefit-cost ratio and payback from the user's own cost and benefit inputs.
+
+The index is a screening tool built on open data. It is not a feasibility study or an
+environmental impact assessment.
+
+**Later.** An AI assistant that can open layers, run the NLI analysis and explain the results.
+
+| Heatmap analysis | Southern Land Bridge | Compare projects |
+|---|---|---|
+| ![](docs/screenshots/02-heatmap-analysis.jpg) | ![](docs/screenshots/03-southern-land-bridge.jpg) | ![](docs/screenshots/04-compare-projects.jpg) |
+
+*Screenshots are from the original concept demo.*
+
+## Data sources
+
+Data is fetched live from each agency's public service:
+[NGIS Thailand](https://ngis.go.th) and the agencies publishing through it, including the Ministry
+of Transport (GI Portal), GISTDA, Land Development Department, Royal Forest Department, Department
+of National Parks, Department of Water Resources, Department of Groundwater Resources, Royal
+Irrigation Department, DEDE, EGAT, Department of Mineral Fuels, Department of Mineral Resources,
+Department of Lands and NESDC. Urban rail and municipal boundaries: Esri Thailand / NOSTRA.
+Hospital points are derived from OpenStreetMap.
+
+Basemaps: [OpenFreeMap](https://openfreemap.org), © [OpenMapTiles](https://openmaptiles.org),
+© [OpenStreetMap contributors](https://www.openstreetmap.org/copyright); satellite imagery by Esri.
+
+## ภาษาไทย
+
+NLI-Thailand คือแพลตฟอร์มภูมิสารสนเทศช่วยตัดสินใจสำหรับโครงการลงทุนด้านโลจิสติกส์และโครงสร้างพื้นฐานของไทย
+ปัจจุบันเว็บมีชั้นข้อมูลสดจากบริการภาครัฐ 41 ชั้น และกำลังพัฒนาเครื่องมือที่ใช้งานได้จริง รวมถึงดัชนี NLI
+ที่คำนวณจากข้อมูลจริงใน 5 มิติ ได้แก่ การเชื่อมต่อ ศักยภาพเศรษฐกิจ ที่ดินและผัง สิ่งแวดล้อม และความเสี่ยง
+
+## Source code
+
+The source code is kept in a private repository. This repository holds the project description and
+the published website (the `gh-pages` branch).
+
+© 2025-2026 mastersungx1. All rights reserved. No license is granted to copy, modify or
+redistribute the code or content of this project.
